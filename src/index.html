@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="https://code.s3.yandex.net/web-code/playlist-favicon.ico"
+      type="image"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Проектная работа №5 Гибадуллина Дмитрия на Яндекс.Практикуме"
+    />
+    <meta name="keywords" content="Россия, места, фотографии" />
+    <meta name="author" content="Гибадуллин Дмитрий" />
+    <title>Mesto.Russia</title>
+  </head>
+
+  <body class="page">
+    <header class="header">
+      <div class="header__logo"></div>
+      <div class="header__line"></div>
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <div class="profile__info">
+          <button class="profile__avatar">
+            <div class="profile__overlay">
+              <div class="profile__avatar-edit"></div>
+            </div>
+            <img src="#" alt="фото пользователя" class="profile__photo" />
+          </button>
+          <div class="profile__author">
+            <div class="profile__edit-line">
+              <h1 class="profile__title"></h1>
+              <button type="button" class="profile__btn-edit"></button>
+            </div>
+            <h2 class="profile__subtitle"></h2>
+          </div>
+        </div>
+        <button type="button" class="profile__btn-add"></button>
+      </section>
+
+      <section class="photo-grid"></section>
+
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </main>
+
+    <!--PopUp для редактирования информации в профиле-->
+    <div class="popup" id="edit">
+      <form
+        class="popup__container popup__form_card"
+        id="formEditElement"
+        name="editForm"
+        novalidate
+      >
+        <button
+          type="button"
+          class="popup__btn-close"
+          id="closeEditForm"
+        ></button>
+        <div class="popup__title">Редактировать профиль</div>
+        <div class="popup__field popup__field_info_name">
+          <input
+            type="text"
+            placeholder="Имя"
+            class="popup__text"
+            name="name"
+            id="name"
+            minlength="2"
+            maxlength="40"
+            pattern="^[а-яА-ЯёЁa-zA-Z\s\-]+$"
+            required
+          />
+          <span id="name-error" class="popup__input"></span>
+        </div>
+        <div class="popup__field popup__field_info_other">
+          <input
+            type="text"
+            placeholder="Род занятий"
+            class="popup__text"
+            name="about"
+            id="about"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span id="about-error" class="popup__input"></span>
+        </div>
+        <button class="popup__btn-save" id="saveButtonProfile">
+          Сохранить
+        </button>
+      </form>
+    </div>
+
+    <!--PopUp для добавления карточки-->
+    <div class="popup" id="add">
+      <form
+        class="popup__container"
+        id="formAddElement"
+        name="addForm"
+        novalidate
+      >
+        <button
+          type="button"
+          class="popup__btn-close"
+          id="closeAddForm"
+        ></button>
+        <div class="popup__title">Новое место</div>
+        <div class="popup__field popup__field_info_name">
+          <input
+            type="text"
+            placeholder="Название"
+            class="popup__text"
+            name="name"
+            id="place"
+            minlength="1"
+            maxlength="30"
+            required
+          />
+          <span id="place-error" class="popup__input"></span>
+        </div>
+        <div class="popup__field popup__field_info_other">
+          <input
+            type="url"
+            placeholder="Ссылка на картинку"
+            class="popup__text"
+            name="link"
+            id="link"
+            required
+          />
+          <span id="link-error" class="popup__input"></span>
+        </div>
+        <button class="popup__btn-save popup__btn-save_disabled" disabled>
+          Создать
+        </button>
+      </form>
+    </div>
+
+    <!--PopUp для увеличения картинок-->
+    <div class="popup" id="view">
+      <form class="popup__picture-container">
+        <img
+          src="#"
+          alt="изображение достопримечательности"
+          class="popup__image"
+          id="image"
+        />
+        <button
+          type="button"
+          class="popup__btn-close"
+          id="cardPictureForm"
+        ></button>
+        <h3 class="popup__bottom-title" id="pictureTitle"></h3>
+      </form>
+    </div>
+
+    <!--PopUp для подтверждения удаления картинок-->
+    <div class="popup" id="deleteCard">
+      <form
+        class="popup__container popup__container_size_small"
+        id="deleteElement"
+        name="deleteForm"
+      >
+        <button
+          type="button"
+          class="popup__btn-close"
+          id="closeDeleteForm"
+        ></button>
+        <div class="popup__title">Вы уверены</div>
+        <button class="popup__btn-save popup__btn-save">Да</button>
+      </form>
+    </div>
+
+    <!--PopUp для редактирования аватара-->
+    <div class="popup" id="avatar">
+      <form
+        class="popup__container popup__container_size_medium"
+        id="formAvatarElement"
+        name="addForm"
+        novalidate
+      >
+        <button
+          type="button"
+          class="popup__btn-close"
+          id="closeAvatarForm"
+        ></button>
+        <div class="popup__title">Обновить аватар</div>
+        <div class="popup__field popup__field_info_other">
+          <input
+            type="url"
+            placeholder="Ссылка на картинку"
+            class="popup__text"
+            name="link"
+            id="link"
+            required
+          />
+          <span id="link-error" class="popup__input"></span>
+        </div>
+        <button class="popup__btn-save popup__btn-save" id="saveButtonAvatar">
+          Сохранить
+        </button>
+      </form>
+    </div>
+
+    <!--Темплейт для предзаполнения и создания карточек-->
+    <template id="cardTemplate">
+      <figure class="photo-grid__item">
+        <img
+          src="#"
+          alt="изображение достопримечательности"
+          class="photo-grid__image"
+        />
+        <h3 class="photo-grid__title"></h3>
+        <div class="photo-grid__likes">
+          <button type="button" class="photo-grid__like"></button>
+          <div class="photo-grid__like-number"></div>
+        </div>
+        <span class="ID" id="_id"></span>
+        <button type="button" class="photo-grid__delete"></button>
+      </figure>
+    </template>
+  </body>
+</html>
