@@ -29,7 +29,6 @@ export class Popup {
 
   // анонимный метод закрытия попапа при клике мышкой на области за пределами изображения
   _handleMouseClose(e) {
-    console.log('нажатиеМышки')
     const popUp = e.target.closest(".popup");
     if (e.target === popUp) {
       popUp.classList.remove("popup_opened");
