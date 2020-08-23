@@ -2,7 +2,7 @@
 
 ---
 
-**ссылка на проект:** https://dimexx87.github.io/YandexPrakticum_Mesto_9/
+**ссылка на проект:** https://dimexx87.github.io/YandexPrakticum_Mesto_9/src/index.html
 
 ## Описание проекта:
 
