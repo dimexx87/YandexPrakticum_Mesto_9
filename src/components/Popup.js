@@ -2,8 +2,9 @@
 export class Popup {
   constructor(moduleWindow, _handleEscClose) {
     this._moduleWindow = moduleWindow;
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._handleMouseClose = this._handleMouseClose.bind(this);
   }
-
 
   // публичный метод открытия попапа и установки слушателей "закрытия"
   open() {
@@ -21,17 +22,15 @@ export class Popup {
 
   // анонимный метод закрытия попапа при клике на ESC
   _handleEscClose(e) {
-    console.log('нажатиеEsc')
     if (e.keyCode === 27) {
-      document.querySelector('.popup_opened').classList.remove("popup_opened");
+      this._moduleWindow.classList.remove("popup_opened");
     }
   }
 
   // анонимный метод закрытия попапа при клике мышкой на области за пределами изображения
   _handleMouseClose(e) {
-    const popUp = e.target.closest(".popup");
-    if (e.target === popUp) {
-      popUp.classList.remove("popup_opened");
+    if (e.target === this._moduleWindow) {
+      this._moduleWindow.classList.remove("popup_opened");
     }
   }
 
