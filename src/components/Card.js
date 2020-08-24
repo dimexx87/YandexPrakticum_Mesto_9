@@ -1,10 +1,5 @@
 // импортируем необходимые атрибуты и функцию
-import {
-  popUpView,
-  zoomPicture,
-  zoomTitle,
-  ownerID,
-} from "../utils/constants.js";
+import { ownerID } from "../utils/constants.js";
 import { Popup } from "./Popup.js";
 
 // СОЗДАЕМ И ЭКСПОРТИРУЕМ КЛАСС СОЗДАНИЯ КАРТОЧЕК
@@ -70,11 +65,11 @@ export class Card {
     }
 
     // определяем ставили ли лайк карточке
-    const owner = {};
-    for (let i = 0; i < this._likes.length; i += 1) {
+    if (this._likes !== 0) {
       const isUserLiked = this._likes.some((like) => {
         return like._id === ownerID;
       });
+
       if (isUserLiked) {
         gridLike.className = "photo-grid__like photo-grid__like_active";
       } else {
